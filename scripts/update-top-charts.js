@@ -5,7 +5,7 @@ const fs = require('fs-extra');
 const CONFIG = {
   maxGames: 100,
   categories: ['GAME', 'GAME_ACTION', 'GAME_ADVENTURE', 'GAME_ARCADE', 'GAME_PUZZLE', 'GAME_CASUAL'],
-  minRating: 4.0,
+  minRating: 3.5,
   minInstalls: 1000000,
   excludeKeywords: ['casino', 'betting', 'gambling', 'slot'],
   gameListPath: './scripts/game-list.json'
@@ -16,7 +16,7 @@ async function fetchTopFreeGames(category, limit = 100) {
     console.log(`  Fetching top ${limit} from ${category}...`);
     const games = await gplay.list({
       category: category,
-      collection: gplay.collection.TOP_FREE,
+      collection: 'TOP_FREE', // Changed from gplay.collection.TOP_FREE
       num: limit,
       country: 'us',
       lang: 'en',
@@ -52,7 +52,7 @@ function calculatePriority(game) {
   const rating = game.score || 0;
   
   if (installs >= 100000000 && rating >= 4.5) return 'high';
-  if (installs >= 10000000 && rating >= 4.0) return 'medium';
+  if (installs >= 10000000 && rating >= 3.5) return 'medium';
   return 'low';
 }
 
