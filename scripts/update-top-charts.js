@@ -1,5 +1,6 @@
 // scripts/update-top-charts.js
-const gplay = require('google-play-scraper');
+const gplay = require('google-play-scraper').default || require('google-play-scraper');
+//const gplay = require('google-play-scraper');
 const fs = require('fs-extra');
 
 const CONFIG = {
