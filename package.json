@@ -1,0 +1,18 @@
+{
+  "name": "freeandroidgames",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "fs-extra": "^11.3.3",
+    "google-play-scraper": "^10.1.2"
+  }
+}

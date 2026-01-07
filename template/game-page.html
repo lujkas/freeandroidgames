@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>{{TITLE}} - {{SITE_NAME}}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{DESCRIPTION}}" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body class="is-preload no-sidebar">
+  <div id="page-wrapper">
+    <div id="header-wrapper">
+      <header id="header" class="container">
+        <div id="logo">
+          <h1><a href="/">🎮 {{SITE_NAME}}</a></h1>
+        </div>
+        <nav id="nav">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/all-games.html">All Games</a></li>
+            <li><a href="/about.html">About</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+    <div id="main-wrapper">
+      <div class="container">
+        <div id="content">
+          <article>
+            <header>
+              <h2>{{TITLE}}</h2>
+              <p>{{GENRE}} • {{RATING}} ⭐ • {{DOWNLOADS}} • By {{DEVELOPER}}</p>
+            </header>
+
+            <div class="row">
+              <div class="col-3 col-12-medium">
+                <span class="image featured"><img src="{{ICON}}" alt="{{TITLE}}" /></span>
+              </div>
+              <div class="col-9 col-12-medium">
+                <a href="{{PLAY_STORE_URL}}" class="button large" target="_blank">
+                  Download Free from Google Play →
+                </a>
+              </div>
+            </div>
+
+            {{FEATURED_IMAGE}}
+
+            <div class="article-content">
+              {{ARTICLE_CONTENT}}
+            </div>
+
+            {{SCREENSHOTS_SECTION}}
+
+            <section>
+              <header><h3>Game Information</h3></header>
+              <table>
+                <tr><td><strong>Developer:</strong></td><td>{{DEVELOPER}}</td></tr>
+                <tr><td><strong>Genre:</strong></td><td>{{GENRE}}</td></tr>
+                <tr><td><strong>Rating:</strong></td><td>{{RATING}} ⭐</td></tr>
+                <tr><td><strong>Downloads:</strong></td><td>{{DOWNLOADS}}</td></tr>
+                <tr><td><strong>Version:</strong></td><td>{{VERSION}}</td></tr>
+                <tr><td><strong>Updated:</strong></td><td>{{UPDATED}}</td></tr>
+              </table>
+            </section>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer-wrapper">
+      <footer id="footer" class="container">
+        <div class="row">
+          <div class="col-12">
+            <div id="copyright">
+              <ul class="links">
+                <li>&copy; {{YEAR}} {{SITE_NAME}}</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/jquery.dropotron.min.js"></script>
+  <script src="/assets/js/browser.min.js"></script>
+  <script src="/assets/js/breakpoints.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

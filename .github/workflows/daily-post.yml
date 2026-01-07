@@ -1,0 +1,57 @@
+name: Daily Game Post
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  publish-daily-game:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm install google-play-scraper axios fs-extra
+      
+      - name: Update game list if needed
+        run: |
+          if [ ! -f "scripts/game-list.json" ]; then
+            node scripts/update-top-charts.js
+          fi
+      
+      - name: Publish daily game
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/daily-post-generator.js
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Daily post $(date +'%Y-%m-%d')" && git push)
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: './public'
+      
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v3
